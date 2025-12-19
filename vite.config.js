@@ -6,4 +6,9 @@ export default defineConfig({
   base: '/front/', // 根路径
   plugins: [vue()],
   envPrefix: ['VITE_', 'API_', 'FBQ'],
+  server: {
+    proxy: {
+      '/api': 'http://localhost:8000',
+    },
+  },
 })

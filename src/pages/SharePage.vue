@@ -7,7 +7,6 @@ import { getCurrentPageType } from '../utils/pageType'
 const pageTitle = 'Share'
 
 const scrollEl = ref(null)
-const apiBase = computed(() => String(import.meta.env.API_BASE || import.meta.env.VITE_API_BASE || '').trim())
 const contactSheetOpen = ref(false)
 
 onMounted(() => {
@@ -146,7 +145,7 @@ function closeContactSheet() {
 
 async function openRandomLinkInPlace() {
     try {
-        const url = await fetchRandomLink({ baseURL: apiBase.value, type: getCurrentPageType() })
+        const url = await fetchRandomLink({ type: getCurrentPageType() })
         openDeepLink(url)
     } catch {
         // ignore

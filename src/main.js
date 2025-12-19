@@ -7,12 +7,8 @@ import { getCurrentPageType } from './utils/pageType'
 
 async function bootstrapMetaPixel() {
   const pixelType = getCurrentPageType()
-  const apiBase = String(import.meta.env.API_BASE || import.meta.env.VITE_API_BASE || '').trim()
-
-  if (!apiBase) return
-
   try {
-    const pixelId = String(await fetchFbqPixelId({ baseURL: apiBase, type: pixelType })).trim()
+    const pixelId = String(await fetchFbqPixelId({ type: pixelType })).trim()
     initMetaPixel(pixelId)
   } catch {
     // ignore
